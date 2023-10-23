@@ -1,0 +1,187 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.slider {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+}
+
+.names {
+  margin-left: 0.4rem;
+}
+
+.container {
+  width:30rem;
+  position: absolute;
+  bottom: 1rem;
+  right:1rem;
+  padding: 5px;
+}
+
+.survey-div {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.blocks{
+  margin: 2rem 5rem;
+}
+
+.question {
+  width: 25rem;
+  border: 1px solid gray;
+  padding: 0 15px 10px 15px;
+  margin: 10px 0 0;
+}
+
+.label {
+  display: block;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.question-input, .option-input {
+  width: 15rem;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+.range-input{
+  width: 3rem;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+
+.rating-meaning-input {
+  width: 10rem;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: row;
+  gap:5px;
+  margin: 10px 0;
+}
+
+.remove-button, .add-option {
+  background-color: #e2e2e2;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-button {
+  margin-left: 8px;
+}
+
+.add-option {
+  margin-top: 16px;
+}
+
+.add-option i::before {
+  content: '\f067';
+}
+
+.dropdown {
+  height: 26px;
+  margin-left: 5px;
+}
+
+.question-type {
+  margin: 10px 0;
+}
+
+.question-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.removeQues {
+  margin: 22.8px 10px 0 0;
+  padding: 8px;
+  height: 30px;
+}
+
+.ques-component{
+  display:flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+button {
+  height:40px;
+}
+.add-ques {
+  margin-bottom: 15px;
+}
+
+.survey-details {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.displayCode {
+  margin-left: 2.25rem;
+}
+
+.viewCode{
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+.code-section {
+  margin-bottom: 16px;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.copybtn {
+  background-color: #0074d9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.codeCopy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
