@@ -18,7 +18,7 @@ function DisplayCode({ codeData }) {
       <div>
         <h4>Head: Copy the code and paste it in the `head` tag of the main HTML document</h4>
         <div className='codeCopy'>
-          <SyntaxHighlighter language="html" style={vscDarkPlus}>
+          <SyntaxHighlighter className="codeBody" language="html" style={vscDarkPlus} >
             {head}
           </SyntaxHighlighter>
           <button onClick={() => copyToClipboard(head)} className='copybtn'><i className="fa fa-clipboard" aria-hidden="true"/> Copy</button>
@@ -27,7 +27,7 @@ function DisplayCode({ codeData }) {
       <div>
         <h4>Body: Copy the code and paste it in the body where the Survey should appear</h4>
         <div className='codeCopy'>
-          <SyntaxHighlighter language="html" style={vscDarkPlus}>
+          <SyntaxHighlighter className="codeBody" language="html" style={vscDarkPlus}>
             {body}
           </SyntaxHighlighter>
           <button onClick={() => copyToClipboard(body)} className='copybtn'><i className="fa fa-clipboard" aria-hidden="true"/> Copy</button>
@@ -36,7 +36,7 @@ function DisplayCode({ codeData }) {
       <div>
         <h4>Script: Add this code below the body tag or even inside a body tag</h4>
         <div className='codeCopy'>
-          <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+          <SyntaxHighlighter className="codeBody" language="javascript" style={vscDarkPlus}>
             {script}
           </SyntaxHighlighter>
           <button onClick={() => copyToClipboard(script)} className='copybtn'><i className="fa fa-clipboard" aria-hidden="true"/> Copy</button>
