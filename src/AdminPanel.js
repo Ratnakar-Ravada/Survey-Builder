@@ -164,7 +164,7 @@ function Question({ index, questionData, updateQuestion, removeQuestion }) {
   return (
     <div className='question'>
       <div className='question-head'>
-        <h2>Question {index + 1}</h2>
+        <h3>Question {index + 1}</h3>
         <button onClick={() => removeQuestion(index)} className='remove-button removeQues'><i className="fas fa-times" /> Remove</button>
       </div>
       <SurveyQuestion question={question} setQuestion={(value) => updateQuestion(index, 'question', value)} />
@@ -249,9 +249,30 @@ function Survey() {
 
   return (
     <div>
+      <h1 style={{marginLeft: "1.25rem", color:"rgb(218, 98, 61)"}}>Survey Builder</h1>
+      <div className='intro'>
+        <div className='message'>
+          <h2>Welcome to Survey Builder Application</h2>
+          <p style={{fontSize:"22px", fontWeight:"semi-bold"}}>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Know your customers better.
+            <br/>
+            <br/>
+            &emsp;&emsp;&emsp;Start by creating the survey according to your wish.
+            <br/>
+            <br/>
+            &emsp;&emsp;&emsp;&emsp;Embed the genereated code to your website.
+            <br/>
+            <br/>
+            And you are all set. Review and improve according the feedback.
+            <br/>
+          </p>
+          <h3>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Get started now...</h3>
+        </div>
+        <img src={process.env.PUBLIC_URL + '/SurveyClipart.jpg'} alt="Survey Clipart"style={{width:"35%", height:"20%"}} />
+      </div>
       <div className='survey-div'>
-        <div className='blocks'>
-          <h1>Customize your survey</h1>
+        <div className='survey block'>
+          <h3>Customize your survey</h3>
           <div className='ques-component'>
             {questions.length > 0 &&
               questions.map((questionData, index) => (
@@ -273,16 +294,18 @@ function Survey() {
             )}
           </div>
         </div>
-        <div className='blocks'>
+        <div className='preview block'>
           {renderButtonClicked && showSurvey && (
-            <div className='survey-details'>
-              <h1>Preview your survey</h1>
-              <SurveyDisplay surveyValues={surveyValues} />
-              <SurveySettings surveySettings={surveySettings} setSurveySettings={setSurveySettings} />
-              <Button onClick={() => getCode(surveyValues, surveySettings)}>
-                <i className='fa fa-code' aria-hidden='true' /> Generate Code
-              </Button>
-            </div>
+            <>
+              <div className='survey-details'>
+                <h3>Preview your survey</h3>
+                <SurveyDisplay surveyValues={surveyValues} />
+                <SurveySettings surveySettings={surveySettings} setSurveySettings={setSurveySettings} />
+              </div>
+              <button className="generateBtn"onClick={() => getCode(surveyValues, surveySettings)}style={{fontSize:"20px"}}>
+                <i className='fa fa-code' aria-hidden='true'/> Generate Code
+              </button>
+            </>
           )}
         </div>
       </div>
