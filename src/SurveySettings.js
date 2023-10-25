@@ -35,7 +35,7 @@ function SurveySettings({surveySettings, setSurveySettings}) {
     };
     return (
       <Box>
-        <h1>Survey Settings</h1>
+        <h3>Survey Settings</h3>
           <Box style={{ border: "1px solid black", padding: "12px"}}>
           <Typography variant= 'body1' style={{fontWeight:"600"}}>
             1. How much time to wait before showing the survey?
