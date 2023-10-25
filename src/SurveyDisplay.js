@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import './styles.css';
 import {
-  Box,
-  Paper,
-  Typography,
-  Button,
-  Radio,
-  Checkbox,
-  Slider,
-  TextareaAutosize,
-  IconButton,
-  Icon
+  Box,Paper,Typography,Button,Radio,Checkbox,Slider,TextareaAutosize,IconButton,Icon
 } from '@mui/material';
 
 function SurveyDisplay({ surveyValues}) {
@@ -30,42 +22,41 @@ function SurveyDisplay({ surveyValues}) {
         }
     }, [currentQuestion]);
 
-  if (surveyValues.questions.length > 0) {
-      const handleNextQuestion = () => {
-          if (currentQuestionIndex < surveyValues.questions.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
-          }
-      };
-      const handlePreviousQuestion = () => {
-          if (currentQuestionIndex > 0) {
-            setCurrentQuestionIndex(currentQuestionIndex - 1);
-          }
-      };
-      const handleSendSurvey = () => {
-        console.log(surveyValues);
-      };
-
-      const handleOptionChange = (option) => {
-          if (currentQuestion.questionType === 'Single Select') {
-              setSelectedOptions([option]);
-          } else if (currentQuestion.questionType === 'Multi Select') {
-              const updatedOptions = selectedOptions.includes(option)
-                  ? selectedOptions.filter((selectedOption) => selectedOption !== option)
-                  : [...selectedOptions, option];
-              setSelectedOptions(updatedOptions);
-          }
-      }
-      const handleSliderChange = (newValue) => {
-        setSliderValue(newValue);
+    if (surveyValues.questions.length > 0) {
+        const handleNextQuestion = () => {
+            if (currentQuestionIndex < surveyValues.questions.length - 1) {
+                setCurrentQuestionIndex(currentQuestionIndex + 1);
+            }
         };
-      return (
-        <Box>
-            <Box style={{ width:"35rem",border: "1px solid black", padding: "12px", position: "relative" }}>
-                <Icon class="fa fa-times" style={{ position: "absolute", top: "3px", right: "5px", cursor: "pointer" }} />
-                <Box style={{padding:"10px"}}>
-                    <Paper elevation={3} style={{padding:"8px", display:"flex", flexDirection:"column", gap:"1rem"}}>
-                        <Typography variant="h6" style={{fontWeight:"600"}}>{currentQuestionIndex + 1}. {currentQuestion.question}</Typography>
-                        <Typography variant="body2">{currentQuestion.questionType}</Typography>
+        const handlePreviousQuestion = () => {
+            if (currentQuestionIndex > 0) {
+                setCurrentQuestionIndex(currentQuestionIndex - 1);
+            }
+        };
+        const handleSendSurvey = () => {
+            console.log(surveyValues);
+        };
+
+        const handleOptionChange = (option) => {
+            if (currentQuestion.questionType === 'Single Select') {
+                setSelectedOptions([option]);
+            } else if (currentQuestion.questionType === 'Multi Select') {
+                const updatedOptions = selectedOptions.includes(option)
+                    ? selectedOptions.filter((selectedOption) => selectedOption !== option)
+                    : [...selectedOptions, option];
+                setSelectedOptions(updatedOptions);
+            }
+        }
+        const handleSliderChange = (newValue) => {
+            setSliderValue(newValue);
+        };
+        return (
+            <Box className="survey-display-box">
+                <Icon className="fa fa-times cancelIcon"/>
+                <Box className="survey-ques">
+                    <Paper className='question-paper' elevation={3}>
+                        <h4 className="ques">{currentQuestionIndex + 1}. {currentQuestion.question}</h4>
+                        <body1 className='question-type'>{currentQuestion.questionType}</body1>
                         {currentQuestion.questionType === 'Single Select' || currentQuestion.questionType === 'Multi Select' ? (
                             <div>
                                 <Typography variant="p">Choose from the following options:</Typography>
@@ -116,32 +107,31 @@ function SurveyDisplay({ surveyValues}) {
                                 <TextareaAutosize
                                     rowsmin={4}
                                     placeholder="Your response here"
-                                    style={{ width: '98%', overflow:"hidden" }}
+                                    className='text-feedback'
                                 />
                             </div>
                         ) : null}
                     </Paper>
                 </Box>
-                <Box display="flex"  justifyContent="space-between" marginTop="16px">
-                    <IconButton onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0} className='fas prevIcon'>
+                <Box className="send-next-box">
+                    <IconButton onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
                         {currentQuestionIndex === 0 ? (
-                            <Icon class="fa fa-angle-double-left"style={{display:'none'}} />
+                            <></>
                         ):(
-                            <Icon class="fa fa-angle-double-left"/>
+                            <Icon className="fa fa-angle-double-left"/>
                         )}
                     </IconButton>
                     {currentQuestionIndex < surveyValues.questions.length - 1 ? (
-                        <Button className='sendfeedback next' variant="contained" color="primary" onClick={handleNextQuestion}>
+                        <Button variant="contained" color="primary" onClick={handleNextQuestion}>
                             Next
                         </Button>
                     ) : (
-                        <Button className='sendfeedback send' variant="contained" color="primary" onClick={handleSendSurvey}>
+                        <Button variant="contained" color="primary" onClick={handleSendSurvey}>
                             Send
                         </Button>
                     )}
                 </Box>
             </Box>
-        </Box>
     );
   }
   return null;

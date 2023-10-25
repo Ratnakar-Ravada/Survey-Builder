@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Typography,
   Box, Paper, FormControlLabel, Radio,
 } from '@mui/material';
 
@@ -20,7 +19,7 @@ function CounterComponent({ value, onIncrement, onDecrement }) {
   };
 
   return (
-    <Paper style={{borderRadius:"4px",display: 'flex', alignItems: 'center', gap: '1rem', padding: '5px 2px' }}>
+    <Paper className='counter-paper'>
       <button onClick={decrementValue}>-</button>
       <span>{localValue}</span>
       <button onClick={incrementValue}>+</button>
@@ -36,10 +35,10 @@ function SurveySettings({surveySettings, setSurveySettings}) {
     return (
       <Box>
         <h3>Survey Settings</h3>
-          <Box style={{ border: "1px solid black", padding: "12px"}}>
-          <Typography variant= 'body1' style={{fontWeight:"600"}}>
-            1. How much time to wait before showing the survey?
-            <div style={{ display: 'flex', alignItems: 'center', gap:'0.75rem', margin:'5px'}}>
+          <Box className="settings-box">
+          <body1 className='settings-ques'>
+            1. How much time to wait before displaying the survey - after the page loads?
+            <div className='counter'>
               <CounterComponent
                 value={surveySettings.timeToWait}
                 onIncrement={(newValue) => setSurveySettings({ ...surveySettings, timeToWait: newValue })}
@@ -47,11 +46,10 @@ function SurveySettings({surveySettings, setSurveySettings}) {
               />
               <span>seconds</span>
             </div>
-          </Typography>
-
-          <Typography  variant='body1' style={{fontWeight:"600"}}>
+          </body1>
+          <body1 className='settings-ques'>
             2. How many times to show the survey?
-            <div style={{ display: 'flex', alignItems: 'center', gap:'0.75rem', margin:'5px'}}>
+            <div className='counter'>
               <CounterComponent
                 value={surveySettings.noOfTimes}
                 onIncrement={(newValue) => setSurveySettings({ ...surveySettings, noOfTimes: newValue })}
@@ -59,10 +57,10 @@ function SurveySettings({surveySettings, setSurveySettings}) {
               />
               <span>times</span>
             </div>
-          </Typography>
-          <Typography  variant='body1' style={{fontWeight:"600"}}>
+          </body1>
+          <body1 className='settings-ques'>
             3. Display frequency - for every
-            <div style={{ display: 'flex', alignItems: 'center', gap:'0.75rem', margin:'5px'}}>
+            <div className='counter'>
               <CounterComponent
                 value={surveySettings.timeToWait}
                 onIncrement={(newValue) => setSurveySettings({ ...surveySettings, displayFreq: newValue })}
@@ -70,16 +68,16 @@ function SurveySettings({surveySettings, setSurveySettings}) {
               />
               <span>minutes</span>
             </div>
-          </Typography>
-          <Typography variant='body1' style={{ fontWeight: "600" }}>
-            4. Choose the type of database to store the survey responses:
-            <div  style={{ display: 'flex',flexWrap:'wrap', gap: '1rem', margin: '10px' }}>
+          </body1>
+          <body1 className='settings-ques'>
+            4. Database to store the user survey responses:
+            <div className='select-database'>
               <FormControlLabel
                 value="MySQL"
                 control={<Radio />}
                 label= {
-                  <Paper style={{padding:"10px"}}>
-                  <img src={process.env.PUBLIC_URL + '/icons/mysql.svg'} alt="MySQL" width="28" height="28" style={{margin:"5px 10px 0 0"}}/>
+                  <Paper className='db'>
+                  <img src={process.env.PUBLIC_URL + '/icons/mysql.svg'} alt="MySQL" className='mysql'/>
                   MySQL
                   </Paper>
                 }
@@ -90,8 +88,8 @@ function SurveySettings({surveySettings, setSurveySettings}) {
                 value="MongoDB"
                 control={<Radio />}
                 label= {
-                  <Paper style={{padding:"10px"}}>
-                  <img src={process.env.PUBLIC_URL + '/icons/mongodb.svg'} alt="MongoDB" width="28" height="28" style={{margin:"5px 10px 0 0"}}/>
+                  <Paper className='db'>
+                  <img src={process.env.PUBLIC_URL + '/icons/mongodb.svg'} alt="MongoDB"className='mongodb'/>
                   MongoDB
                   </Paper>
                 }
@@ -102,8 +100,8 @@ function SurveySettings({surveySettings, setSurveySettings}) {
                 value="PostgreSQL"
                 control={<Radio />}
                 label= {
-                  <Paper style={{padding:"10px"}}>
-                  <img src={process.env.PUBLIC_URL + '/icons/postgresql.svg'} alt="PostgreSQL" width="28" height="28" style={{margin:"5px 10px 0 0"}}/>
+                  <Paper className='db'>
+                  <img src={process.env.PUBLIC_URL + '/icons/postgresql.svg'} alt="PostgreSQL"className='postgresql'/>
                   PostgreSQL
                   </Paper>
                 }
@@ -114,8 +112,8 @@ function SurveySettings({surveySettings, setSurveySettings}) {
                 value="Firebase"
                 control={<Radio />}
                 label= {
-                  <Paper style={{padding:"10px"}}>
-                  <img src={process.env.PUBLIC_URL + '/icons/firebase.svg'} alt="Firebase" width="28" height="28" style={{margin:"5px 10px 0 10px"}}/>
+                  <Paper className='db'>
+                  <img src={process.env.PUBLIC_URL + '/icons/firebase.jpg'} alt="Firebase" className='firebase'/>
                   Firebase
                   </Paper>
                 }
@@ -126,8 +124,8 @@ function SurveySettings({surveySettings, setSurveySettings}) {
                 value="SQLite"
                 control={<Radio />}
                 label= {
-                  <Paper style={{padding:"10px"}}>
-                  <img src={process.env.PUBLIC_URL + '/icons/SQLite.png'} alt="SQLite" width="60" height="30" style={{margin:"5px 10px 0 10px"}}/>
+                  <Paper className='db'>
+                  <img src={process.env.PUBLIC_URL + '/icons/SQLite.png'} alt="SQLite" className='sqlite'/>
                   SQLite
                   </Paper>
                 }
@@ -138,16 +136,16 @@ function SurveySettings({surveySettings, setSurveySettings}) {
                 value="Custom"
                 control={<Radio />}
                 label= {
-                  <Paper style={{padding:"10px"}}>
-                  <img src={process.env.PUBLIC_URL + '/icons/database.svg'} alt="Custom DB" width="28" height="28" style={{margin:"5px 10px 0 10px"}}/>
-                  Your own Database
+                  <Paper className='db'>
+                  <img src={process.env.PUBLIC_URL + '/icons/database.svg'} alt="Custom DB"className='customdb'/>
+                  Custom Database
                   </Paper>
                 }
                 onChange={handleDatabaseChange}
                 checked={surveySettings.selectedDatabase === "Custom"}
               />
             </div>
-          </Typography>
+          </body1>
           </Box>
       </Box>
     );

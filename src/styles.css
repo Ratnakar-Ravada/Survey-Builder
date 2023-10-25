@@ -1,101 +1,127 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.slider {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  margin-top: 0.75rem;
-}
-
-.names {
-  margin-left: 0.4rem;
-}
-
 .container {
-  width:30rem;
-  position: absolute;
-  bottom: 1rem;
-  right:1rem;
+  max-width: 100%;
   padding: 5px;
 }
 
+/* Admin Panel Styles */
+
+.survey-title{
+  margin: 2rem;
+  color:rgb(218, 98, 61);
+}
 .intro {
   display: flex;
   flex-direction: row;
-  gap: 3rem;
+  gap: 5rem;
+}
+.intro-text {
+  font-size: 1.175rem;
+  margin-left: 2.25rem;
+  line-height: 3rem;
+}
+
+img {
+  width:25rem;
+  height: 18rem;
 }
 .message {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 1rem 0 1rem 5rem ;
+  margin: 0 2rem;
+  text-align: center;
 }
+
 .survey-div {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.block{
-  margin: 0 4rem;
+.survey {
+  margin : 0 3rem 0 4rem;
 }
 
+.preview {
+  margin: 0 1rem 0 3rem;
+}
 .question {
-  width: 30rem;
+  width: 35rem;
   border: 1px solid gray;
-  padding: 0 15px 10px 15px;
-  margin: 10px 0 0;
+  padding: 0 1rem 1rem 1rem;
+  margin: 1rem 0 0;
 }
 
 .label {
-  display: block;
-  margin: 10px 0;
+  width: 6.5rem;
+  margin: 1rem 0;
   font-weight: 600;
 }
-
-.question-input, .option-input {
-  width: 17rem;
+.range-label{
+  display: flex;
+  gap: 2rem;
+  width: 6.5rem;
+  font-weight: 600;
+  margin: 0.75rem 0 0;
+}
+.question-input, .option-input{
+  width: 34rem;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-left: 5px;
+  margin: 0.5rem 0;
+  font-size: medium;
+  font-family: "Montserrat";
 }
-
-.range-input{
+.range-input {
   width: 3rem;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin: 0 5px;
+  font-size: medium;
+  margin-bottom: 0.5rem;
+  font-family: "Montserrat";
 }
 
 .rating-meaning-input {
-  width: 15rem;
+  width: 20rem;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin: 0 5px;
+  font-size: medium;
+  /* margin: 0 0 1rem ; */
+  font-family: "Montserrat";
 }
-
+.rating-meaning-label {
+  display: flex;
+  gap: 2rem;
+  font-weight: 600;
+  margin: 0.75rem 0 0;
+}
+.option-input {
+  width: 28rem;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 .option-container {
   display: flex;
+  width: 100%;
+  height: 3.25rem;
   flex-direction: row;
-  gap:5px;
-  margin: 10px 0;
+  margin: 1rem 0;
+  gap: 10px;
 }
-
+option{
+  font-size: medium;
+  font-family: "Montserrat";
+}
 .remove-button, .add-option {
   background-color: #e2e2e2;
   color: rgb(0, 0, 0);
@@ -103,14 +129,19 @@ code {
   padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
+  margin-left: 0.5rem;
 }
 
 .remove-button {
-  margin-left: 8px;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  height: 2.25rem;
 }
 
 .add-option {
-  margin-top: 16px;
+  margin-top: 1rem;
+  width: 9rem;
+  padding: 12px;
 }
 
 .add-option i::before {
@@ -118,12 +149,17 @@ code {
 }
 
 .dropdown {
-  height: 26px;
-  margin-left: 5px;
+  width: 34rem;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  font-size: medium;
+  font-family: "Montserrat";
 }
 
 .question-type {
-  margin: 10px 0;
+  margin: 1rem 0;
 }
 
 .question-head {
@@ -133,39 +169,187 @@ code {
 }
 
 .removeQues {
-  margin: 22.8px 10px 0 0;
+  margin: 1.25rem 1rem 0 0;
   padding: 8px;
-  height: 30px;
 }
-
-.ques-component{
-  display:flex;
+.ques-component {
+  width: 35rem;
+  display: flex;
   flex-direction: column;
   gap: 0;
-  margin-top: 1.75rem;
+  margin-top: 1.25rem;
 }
 
-button {
+.button {
   cursor: pointer;
-  height:40px;
+  height: 40px;
+  width: 35rem;
 }
+
 .add-ques {
+  font-family: 'Montserrat';
   cursor: pointer;
-  margin-bottom: 15px;
+  width: 100;
+  margin: 0.85rem 0;
+  margin-left: 1rem;
 }
 
 .survey-details {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 2.5rem;
 }
+
+.render-survey {
+  font-family: 'Montserrat';
+  cursor: pointer;
+  width: 35rem;
+  margin-left: 1rem;
+}
+
+.generateBtn {
+  position: relative;
+  left: 7.5rem;
+  width: 14rem;
+  padding: 15px;
+  font-size: medium;
+  font-weight: 600;
+  font-family: 'Montserrat';
+  border-radius: 5%;
+  background-color: rgb(218, 98, 61);
+  margin: 2rem 0;
+  cursor: pointer;
+}
+
+/* Survey Display Styles  */
+
+.survey-display-box {
+  width:28.5rem;
+  border: 1px solid black; 
+  padding: 8px; 
+  position: relative; 
+}
+
+.cancelIcon {
+  position: absolute; 
+  top: 2px; 
+  right: 4px; 
+  cursor: pointer;
+}
+
+.survey-ques {
+  margin: 1rem 0;
+  padding:1rem;
+  line-height: 1.25rem;
+}
+
+.question-paper {
+  padding:8px;
+  display:flex; 
+  flex-direction:column; 
+}
+
+.ques {
+  font-family: 'Montserrat';
+  font-weight:600;
+}
+
+.question-type {
+  font-family: 'Montserrat';
+  margin-bottom: 1.5rem;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.names {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.text-feedback {
+  width: 98%;
+  overflow: hidden;
+  font-family: 'Montserrat';
+}
+
+.send-next-box {
+  display:flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+/* Survey Settings Styles */
+
+.settings-box{
+  width: 28rem;
+  border: 1px solid black; 
+  padding: 12px;
+  margin-top: 3rem;
+}
+
+.settings-ques {
+  font-weight: bold;
+  line-height: 2rem;
+}
+
+.counter {
+  display: flex; 
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 3rem;
+}
+
+.counter-paper {
+  border-radius:4px;
+  display: flex;
+  align-items: center; 
+  gap: 1rem;
+  padding: 5px 2px;
+}
+
+.select-database {
+  display:flex;
+  flex-wrap:wrap; 
+  justify-content: space-evenly; 
+}
+
+.db {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.mysql, .mongodb, .postgresql, .customdb{
+  width:3rem; 
+  height:2rem; 
+  margin: 5px 10px 0 0;
+}
+
+.firebase {
+  width:2.125rem; 
+  height:2.25rem; 
+  margin: 5px 10px 0 0;
+}
+
+.sqlite {
+  width:4rem; 
+  height:2rem; 
+  margin: 5px 10px 0 0;
+}
+
+/* Display Code Styles */
 
 .displayCode {
   margin-left: 2.25rem;
 }
 
-.viewCode{
-  width: 80%;
+.viewCode {
+  width: 60rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -176,40 +360,39 @@ button {
 }
 
 .code-section {
-  margin-bottom: 16px;
+  margin-bottom: 1.6rem;
 }
 
 h4 {
   font-size: 18px;
-  font-weight: semi-bold;
-  margin-bottom: 8px;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
 }
 
+.codeCopy {
+  position: relative;
+}
 .copybtn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
   background-color: #0074d9;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 8px 16px;
   cursor: pointer;
-  margin-top: 8px;
 }
 
-.codeCopy {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.render-survey {
+.clicked {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.75rem;
+  background-color: #68a2d4;
+  color: rgb(8, 8, 8);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
   cursor: pointer;
-}
-.generateBtn{
-  position: relative;
-  left: 11rem;
-  width: 14rem;
-  padding: 5px;
-  border-radius: 5%;
-  background-color: rgb(218, 98, 61);
-  margin: 2rem 0;
+  margin-top: 0.8rem;
 }

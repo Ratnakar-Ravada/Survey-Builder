@@ -1,17 +1,7 @@
 const generateEmbeddedCode = (surveyValues, surveySettings) => {
-    const surveyScript = `
-<script type="text/babel">
+    const surveyScript = `<script type="text/babel">
     const {
-        Box,
-        Paper,
-        Typography,
-        Slider,
-        Radio,
-        Checkbox,
-        TextareaAutosize,
-        Button,
-        Icon,
-        IconButton
+        Box,Paper,Typography,Slider,Radio,Checkbox,TextareaAutosize,Button,Icon,IconButton
     } = MaterialUI;
     const { useState,useEffect } = React;
     const settings = ${JSON.stringify(surveySettings)};
@@ -222,10 +212,8 @@ const generateEmbeddedCode = (surveyValues, surveySettings) => {
     };
 
     setTimeout(() => showSurvey(), settings.timeToWait * 1000);
-</script>
-    `;
-    const headCode = `
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</script>`;
+    const headCode = `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script src="https://unpkg.com/react@latest/umd/react.development.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@mui/material@latest/umd/material-ui.development.js" crossorigin="anonymous"></script>
@@ -235,8 +223,9 @@ const generateEmbeddedCode = (surveyValues, surveySettings) => {
 // Import the firebase functions you need from the Firebase JavaScript SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
 import { getFirestore, collection, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
-    
-// Initialize Firebase with your Firebase project's configuration
+
+//Replace this configuration with your own configuration
+
 const firebaseConfig = {
     apiKey: "AIzaSyCFXdIPoh2m_hmoD0VNxGHfUBF0wCWZel0",
     authDomain: "adminpanel-a8c2b.firebaseapp.com",
@@ -246,6 +235,9 @@ const firebaseConfig = {
     appId: "1:259983249859:web:9e4394f76cb95c8473ed76",
     measurementId: "G-6QC2RZD420"
 };
+
+// Initialize Firebase with your Firebase project's configuration
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const saveSurveyResponses = async (userResponses) => {
@@ -280,16 +272,11 @@ window.saveSurveyResponses = saveSurveyResponses;
         right:1rem;
         padding: 5px;
     }
-</style>
-    `;
+</style>`;
     
-    const bodyCode = `
-<div id="survey-container"></div>
-    `;
+    const bodyCode = `<div id="survey-container"></div>`;
 
-    const embedCode = `
-${surveyScript}
-    `;
+    const embedCode = `${surveyScript}`;
     return ({headCode, bodyCode, embedCode});
 }
 

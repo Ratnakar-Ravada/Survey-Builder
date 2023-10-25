@@ -6,9 +6,6 @@ import SurveySettings from './SurveySettings';
 import DisplayCode from './DisplayCode';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, doc, setDoc  } from'firebase/firestore';
-import {
-  Button
-} from '@mui/material';
 
 // Initialize Firebase with your Firebase project's configuration
 const firebaseConfig = {
@@ -108,7 +105,7 @@ function RatingRange({ questionData, setRatingRange }) {
   if (questionType === 'Slide to rate') {
     return (
       <div>
-        <label  className="label">
+        <label  className="range-label">
           Range:
           <input
             type="number"
@@ -126,7 +123,8 @@ function RatingRange({ questionData, setRatingRange }) {
             className="range-input"
           />
         </label>
-        <label  className="label">
+        <br/>
+        <label  className="rating-meaning-label">
           Min Rating means:
           <input
             type="text"
@@ -136,7 +134,7 @@ function RatingRange({ questionData, setRatingRange }) {
           />
         </label>
         <br />
-        <label  className="label">
+        <label  className="rating-meaning-label">
           Max Rating means:
           <input
             type="text"
@@ -248,32 +246,25 @@ function Survey() {
   };
 
   return (
-    <div>
-      <h1 style={{marginLeft: "1.25rem", color:"rgb(218, 98, 61)"}}>Survey Builder</h1>
-      <div className='intro'>
-        <div className='message'>
+    <div className="survey-container">
+      <h1 className="survey-title">Survey Builder</h1>
+      <div className="intro">
+        <div className="message">
           <h2>Welcome to Survey Builder Application</h2>
-          <p style={{fontSize:"22px", fontWeight:"semi-bold"}}>
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Know your customers better.
-            <br/>
-            <br/>
-            &emsp;&emsp;&emsp;Start by creating the survey according to your wish.
-            <br/>
-            <br/>
-            &emsp;&emsp;&emsp;&emsp;Embed the genereated code to your website.
-            <br/>
-            <br/>
-            And you are all set. Review and improve according the feedback.
-            <br/>
+          <p className="intro-text">
+            Know your customers better.<br />
+            Start by creating the survey according to your wish.<br />
+            Embed the generated code to your website.<br />
+            All set. Review and improve according to the feedback.
           </p>
-          <h3>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Get started now...</h3>
+          <h3 className='get-started'><i className="fa fa-angle-double-down" aria-hidden="true"></i> Get started now...</h3>
         </div>
-        <img src={process.env.PUBLIC_URL + '/SurveyClipart.jpg'} alt="Survey Clipart"style={{width:"35%", height:"20%"}} />
+        <img src={process.env.PUBLIC_URL + '/SurveyClipart.jpg'} alt="Survey Clipart" className="intro-image" />
       </div>
-      <div className='survey-div'>
-        <div className='survey block'>
-          <h3>Customize your survey</h3>
-          <div className='ques-component'>
+      <div className="survey-div">
+        <div className="survey block">
+          <h3 className="custom-survey-title">Customize your survey</h3>
+          <div className="ques-component">
             {questions.length > 0 &&
               questions.map((questionData, index) => (
                 <Question
@@ -283,33 +274,34 @@ function Survey() {
                   updateQuestion={updateQuestion}
                   removeQuestion={removeQuestion}
                 />
-              ))}
-            <button onClick={handleAddQuestion} className='add-ques button'>
-              <i className='fas fa-plus' /> Add question
+              ))
+            }
+            <button onClick={handleAddQuestion} className="add-ques button">
+              <i className="fas fa-plus" /> Add question
             </button>
             {showRenderButton && (
-              <button onClick={handleRenderSurvey} className='render-survey button'>
+              <button onClick={handleRenderSurvey} className="render-survey button">
                 Render survey
               </button>
             )}
           </div>
         </div>
-        <div className='preview block'>
+        <div className="preview block">
           {renderButtonClicked && showSurvey && (
             <>
-              <div className='survey-details'>
-                <h3>Preview your survey</h3>
+              <div className="survey-details">
+                <h3 className="preview-title">Preview your survey</h3>
                 <SurveyDisplay surveyValues={surveyValues} />
                 <SurveySettings surveySettings={surveySettings} setSurveySettings={setSurveySettings} />
               </div>
-              <button className="generateBtn"onClick={() => getCode(surveyValues, surveySettings)}style={{fontSize:"20px"}}>
-                <i className='fa fa-code' aria-hidden='true'/> Generate Code
+              <button className="generateBtn" onClick={() => getCode(surveyValues, surveySettings)}>
+                <i className="fa fa-code" aria-hidden="true" />  Generate Code
               </button>
             </>
           )}
         </div>
       </div>
-      <div className='displayCode'>
+      <div className="displayCode">
         {showCodeSection && <DisplayCode codeData={codeData} />}
       </div>
     </div>
